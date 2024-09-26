@@ -7,12 +7,12 @@
         @vite('./resources/css/app.css')
     </head>
     <body class="bg-gray-100">
-        <header class="p-5 border-b bg-white shadow ">
+        <header class="p-5 border-b bg-white shadow sticky top-0">
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black">Devstagram</h1>
                 <nav class="flex gap-2 items-center">
-                    <a href="#" class="font-bold uppercase text-gray-600 text-sm">Iniciar sesión</a>
-                    <a href="#" class="font-bold uppercase text-gray-600 text-sm">Registrarse</a>
+                    <a href="/login" class="font-bold uppercase text-gray-600 text-sm">Iniciar sesión</a>
+                    <a href="/register" class="font-bold uppercase text-gray-600 text-sm">Registrarse</a>
                 </nav>
             </div>
         </header>
@@ -22,7 +22,7 @@
             @yield('content')
         </main>
 
-        <footer class="text-center p-5 text-gray-600 font-bold uppercase">
+        <footer class=" mt-10 text-center p-5 text-gray-600 font-bold uppercase">
             Devstagram - Todos los derechos reservados {{ now()->year }}
         </footer>
     </body>
