@@ -12,7 +12,7 @@
                 <h1 class="text-3xl font-black">Devstagram</h1>
                 <nav class="flex gap-2 items-center">
                     <a href="/login" class="font-bold uppercase text-gray-600 text-sm">Iniciar sesión</a>
-                    <a href="/register" class="font-bold uppercase text-gray-600 text-sm">Registrarse</a>
+                    <a href="{{ route('register') }}" class="font-bold uppercase text-gray-600 text-sm">Registrarse</a>
                 </nav>
             </div>
         </header>

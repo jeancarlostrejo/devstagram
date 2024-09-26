@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('auth.register');
+    }
+
+    public function store(RegisterRequest $request): RedirectResponse
+    {
+        User::create($request->validated());
+
+        return to_route('wall.index');
     }
 }
