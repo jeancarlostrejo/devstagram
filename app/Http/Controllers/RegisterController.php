@@ -18,6 +18,8 @@ class RegisterController extends Controller
     {
         User::create($request->validated());
 
+        auth()->attempt($request->only(['email', 'password']));
+
         return to_route('wall.index');
     }
 }
