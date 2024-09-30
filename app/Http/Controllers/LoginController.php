@@ -14,7 +14,7 @@ class LoginController extends Controller
     
     public function store(LoginRequest $request)
     {
-        if (!auth()->attempt($request->only(['email', 'password']))) {
+        if (!auth()->attempt($request->only(['email', 'password']),$request->remember)) {
             return back()->with('message', 'Email or password incorrect');
         }
 
