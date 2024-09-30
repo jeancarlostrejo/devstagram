@@ -18,7 +18,7 @@ class LoginController extends Controller
             return back()->with('message', 'Email or password incorrect');
         }
 
-        session()->regenerate();
+        $request->session()->regenerate();
 
         return to_route('wall.index');
     }

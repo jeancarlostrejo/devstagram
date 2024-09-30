@@ -13,7 +13,12 @@
                 @auth
                     <nav class="flex gap-2 items-center">
                         <a href="#" class="font-bold text-gray-600 text-sm">Hola: <span class="font-normal">{{ auth()->user()->username }}</span></a>
-                        <a href="{{ route('register') }}" class="font-bold uppercase text-gray-600 text-sm">Cerrar sesión</a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="font-bold uppercase text-gray-600 text-sm">
+                                Cerrar sesión
+                            </button>
+                        </form>
                     </nav>
                 @else
                     <nav class="flex gap-2 items-center">
