@@ -15,9 +15,9 @@
                         <a href="#" class="font-bold text-gray-600 text-sm">Hola: <span class="font-normal">{{ auth()->user()->username }}</span></a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="font-bold uppercase text-gray-600 text-sm">
+                            <a  href="{{ route('logout') }}" class="font-bold uppercase text-gray-600 text-sm" onclick="event.preventDefault(); this.closest('form').submit()">
                                 Cerrar sesión
-                            </button>
+                            </a>
                         </form>
                     </nav>
                 @else
