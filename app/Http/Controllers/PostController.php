@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -12,9 +13,7 @@ class PostController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
-    
-    
+    public function index(): View
     {
         return view('dashboard');
     }
