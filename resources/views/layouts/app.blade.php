@@ -19,7 +19,7 @@
                             </svg>
                           Crear  
                         </a>
-                        <a href="#" class="font-bold text-gray-600 text-sm">Hola: <span class="font-normal">{{ auth()->user()->username }}</span></a>
+                        <a href="{{ route('posts.index', auth()->user()->username) }}" class="font-bold text-gray-600 text-sm">Hola: <span class="font-normal">{{ auth()->user()->username }}</span></a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <a  href="{{ route('logout') }}" class="font-bold uppercase text-gray-600 text-sm" onclick="event.preventDefault(); this.closest('form').submit()">

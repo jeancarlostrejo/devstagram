@@ -20,6 +20,6 @@ class RegisterController extends Controller
 
         auth()->attempt($request->only(['email', 'password']));
 
-        return to_route('wall.index', auth()->user()->username);
+        return to_route('posts.index', auth()->user()->username);
     }
 }
