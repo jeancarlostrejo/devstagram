@@ -18,4 +18,9 @@ class PostController extends Controller
     {
         return view('dashboard', compact('user'));
     }
+
+    public function create(): View
+    {
+        dd('creando posts...');
+    }
 }

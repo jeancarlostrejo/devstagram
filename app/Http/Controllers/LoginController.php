@@ -20,6 +20,6 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return to_route('wall.index');
+        return to_route('wall.index', auth()->user()->username);
     }
 }
