@@ -4,11 +4,17 @@
     Crea una nueva publicación
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}" type="text/css" />
+@endpush
+
 @section('content')
     <div class="md:flex md:items-center">
 
         <div class=" md:w-1/2 px-10">
-            imagen aquí
+            <form action="{{ route('images.stores') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-8 w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
+            </form>
         </div>
 
         <div class="md:w-1/2 px-10 bg-white p-6 rounded-lg shadow-xl mt-0">
