@@ -18,7 +18,7 @@
         </div>
 
         <div class="md:w-1/2 px-10 bg-white p-6 rounded-lg shadow-xl mt-0">
-            <form action="" method="POST" novalidate>
+            <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="title" class="mb-2 text-gray-500 font-bold">Título
