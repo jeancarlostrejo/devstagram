@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StorePostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -42,5 +42,18 @@ class PostController extends Controller
         $post->load('comments.user');
         
         return view('posts.show', compact('post', 'user'));
+    }
+
+    public function destroy(Post $post): RedirectResponse
+    {
+        $this->authorize('delete', $post);
+
+        $post->delete();
+        
+        if(File::exists(Storage::path('posts/' . $post->image))){
+            Storage::delete('posts/' . $post->image);
+        }
+        
+        return to_route('posts.index', auth()->user()->username);
     }
 }
