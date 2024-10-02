@@ -18,4 +18,26 @@
             </div>
         </div>
     </div>
+
+    <section class="container mx-auto mt-10">
+        <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
+
+        @if($posts->count())
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                @foreach ($posts as $post)
+                    <div>
+                        <a>
+                            <img src="{{ Storage::url('posts/') . $post->image }}" alt="Imagen del post {{ $post->title }}">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="tex-white mt-5">
+                {{ $posts->links() }}
+            </div>
+        @else
+            <p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts</p>
+        @endif
+    </section>
 @endsection
