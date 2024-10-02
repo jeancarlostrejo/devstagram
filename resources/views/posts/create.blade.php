@@ -32,8 +32,8 @@
                 <div class="mb-5">
                     <label for="description" class="mb-2 text-gray-500 font-bold">Descripción
                     </label>
-                    <textarea name="description" id="description" class="border p-3 w-full rounded-lg @error('description') border-red-500 @enderror"
-                    placeholder="Descripción de la publicación" style="resize: none;">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" class="border p-3 w-full rounded-lg resize-none @error('description') border-red-500 @enderror"
+                    placeholder="Descripción de la publicación">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
