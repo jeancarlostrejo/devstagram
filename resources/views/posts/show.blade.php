@@ -22,21 +22,22 @@
 
         <div class="md:w-6/12 p-5">
             <div class="shadow bg-white p-5 mb-5">
-                <p class="text-xl font-bold text-center mb-4">Agrega un Nuevo Comentario</p>
+                @auth
+                    <p class="text-xl font-bold text-center mb-4">Agrega un Nuevo Comentario</p>
+                    <form action="">
+                        <div class="mb-5">
+                        <label for="comment" class="mb-2 text-gray-500 font-bold text-sm">Añade un comentario
+                        </label>
+                        <textarea name="comment" id="comment" class="border p-3 w-full rounded-lg resize-none @error('comment') border-red-500 @enderror"
+                        placeholder="Agrega un comentario"></textarea>
+                        @error('comment')
+                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                        @enderror
 
-                <form action="">
-                    <div class="mb-5">
-                    <label for="comment" class="mb-2 text-gray-500 font-bold text-sm">Añade un comentario
-                    </label>
-                    <textarea name="comment" id="comment" class="border p-3 w-full rounded-lg resize-none @error('comment') border-red-500 @enderror"
-                    placeholder="Agrega un comentario"></textarea>
-                    @error('comment')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
-                    @enderror
+                        <input type="submit" value="Comentar" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
 
-                    <input type="submit" value="Comentar" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
-
-                </form>
+                    </form>
+                @endauth
             </div>
         </div>
     </div>
