@@ -31,4 +31,9 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function checkLike(User $user): bool
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
