@@ -24,7 +24,8 @@
             <img src="{{ Storage::url('posts/') . $post->image }}" alt="Imagen del post {{ $post->title }}">
 
             <div class="p-3 flex items-center gap-4">
-                <form action="">
+                <form action="{{ route('posts.like.store', $post) }}" method="POST">
+                    @csrf
                     <div class="my-4">
                         <button type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
