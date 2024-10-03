@@ -37,7 +37,7 @@
         <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
 
         @if($posts->count())
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-3 sm:p-0">
                 @foreach ($posts as $post)
                     <div>
                         <a href="{{ route('posts.show', ['user' => $user, 'post' => $post]) }}">
@@ -47,7 +47,7 @@
                 @endforeach
             </div>
 
-            <div class="tex-white mt-5">
+            <div class="tex-white mt-5 px-3 sm:p-0">
                 {{ $posts->links() }}
             </div>
         @else

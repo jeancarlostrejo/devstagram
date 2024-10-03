@@ -20,7 +20,7 @@
         </script>
     @endif
     <div class="container mx-auto md:flex">
-        <div class="md:w-6/12">
+        <div class="md:w-6/12 p-3 sm:p-0">
             <img src="{{ Storage::url('posts/') . $post->image }}" alt="Imagen del post {{ $post->title }}">
 
             <div class="p-3 flex items-center gap-4">
@@ -70,7 +70,7 @@
             @endauth
         </div>
 
-        <div class="md:w-6/12 p-5">
+        <div class="md:w-6/12 p-3">
             <div class="shadow bg-white p-5 mb-5">
                 @auth
                     <p class="text-xl font-bold text-center mb-4">Agrega un Nuevo Comentario</p>
