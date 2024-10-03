@@ -7,8 +7,9 @@
 @section('content')
     <div class=" md:flex md:justify-center">
         <div class=" md:w-6/12 bg-white shadow p-6">
-            <form action="{{ route('profile.store', auth()->user()) }}" method="POST" enctype="multipart/form-data" class="mt-10 md:mt-0">
+            <form action="{{ route('profile.update', auth()->user()) }}" method="POST" enctype="multipart/form-data" class="mt-10 md:mt-0">
                 @csrf
+                @method('PATCH')
                 <div class="mb-5">
                     <label for="name" class="mb-2 text-gray-500 font-bold">Nombre
                     </label>

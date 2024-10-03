@@ -34,4 +34,4 @@ Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('post
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.like.destroy');
 
 Route::get('/{user:username}/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
-Route::post('/{user:username}/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
+Route::patch('/{user:username}/edit-profile', [ProfileController::class, 'update'])->name('profile.update');
