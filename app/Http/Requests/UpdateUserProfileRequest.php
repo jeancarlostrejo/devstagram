@@ -23,7 +23,7 @@ class UpdateUserProfileRequest extends FormRequest
     {
         return [
             "name" => 'required|min:2|max:50',
-            'username' => ['required', 'min:3', 'max:20', 'unique:users,username,' . auth()->user()->username, 'not_in:twitter,edit-profile'],
+            'username' => ['required', 'min:3', 'max:20', 'unique:users,username,' . auth()->user()->id, 'not_in:twitter,edit-profile'],
             'image' => 'sometimes|image|mimes:png,jpg,jpeg,gif'
         ];
     }
