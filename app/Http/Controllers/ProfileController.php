@@ -16,6 +16,8 @@ class ProfileController extends Controller
 
     public function index(Request $request, User $user): View
     {
+        $this->authorize('view', $user);
+
         return view('profile.index');
     }
 }
