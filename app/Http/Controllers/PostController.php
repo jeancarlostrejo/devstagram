@@ -34,7 +34,7 @@ class PostController extends Controller
     {
         auth()->user()->posts()->create($request->validated());
 
-        return to_route('posts.index', auth()->user()->username);
+        return to_route('posts.index', auth()->user()->username)->with('message', '¡Publicación creada exitosamente!');
     }
 
     public function show(User $user, Post $post)

@@ -4,7 +4,21 @@
     Perfil: {{ $user->username }}
 @endsection
 
+@push('styles')
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/sweetAlertToast.css') }}">
+@endpush
+
 @section('content')
+@if (session('message'))
+    <script src="{{ asset('js/toast.js') }}"></script>
+    <script>
+        Toast.fire({
+            icon: "success",
+            title: "{{ session('message') }}",
+        });
+    </script>
+@endif
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">

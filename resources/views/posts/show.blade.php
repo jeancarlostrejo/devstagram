@@ -4,7 +4,21 @@
     Post: {{ $post->title }}
 @endsection
 
+@push('styles')
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/sweetAlertToast.css') }}">
+@endpush
+
 @section('content')
+    @if (session('message'))
+        <script src="{{ asset('js/toast.js') }}"></script>
+        <script>
+            Toast.fire({
+                icon: "success",
+                title: "{{ session('message') }}",
+            });
+        </script>
+    @endif
     <div class="container mx-auto md:flex">
         <div class="md:w-6/12">
             <img src="{{ Storage::url('posts/') . $post->image }}" alt="Imagen del post {{ $post->title }}">
@@ -21,7 +35,7 @@
 
             @auth
                 @can ('delete', $post)
-                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                    <form id="form-delet" action="{{ route('posts.destroy', $post) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Eliminar publicación" class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer">
@@ -30,17 +44,10 @@
             @endauth
         </div>
 
-
         <div class="md:w-6/12 p-5">
             <div class="shadow bg-white p-5 mb-5">
                 @auth
                     <p class="text-xl font-bold text-center mb-4">Agrega un Nuevo Comentario</p>
-
-                    @if (session('message'))
-                        <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
-                            {{ session('message') }}
-                        </div>
-                    @endif
 
                     <form action="{{ route('comments.store', ['user' => $user, 'post' => $post]) }}" method="POST">
                         @csrf
@@ -72,3 +79,8 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/deleteConfirmation.js') }}"></script>
+@endsection()
+    
