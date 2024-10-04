@@ -22,7 +22,7 @@
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">
-                <img src="{{ asset('img/usuario.svg') }}" alt="Imagen del usuario">
+                <img src="{{ $user->image ? Storage::url('profiles/' . $user->image) : asset('img/usuario.svg') }}" alt="Imagen del usuario">
             </div>
             <div class=" md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:justify-center py-10 md:py-10 md:items-start">
                 <div class="flex items-center gap-2">
