@@ -43,7 +43,10 @@
                     <input id="notImage" type="checkbox" name="notImage"> <label for="notImage" class="text-gray-500 text-sm">Quitar foto de perfil</label>
                 </div>
 
-                <input type="submit" value="Actualizar perfil" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
+                <div class="flex gap-2">
+                    <input type="submit" value="Actualizar perfil" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
+                    <a href="{{ route('posts.index', auth()->user()) }}" class="bg-red-600 hover:bg-red-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg text-center">Cancelar</a>
+                </div>
             </form>
         </div>
     </div>
