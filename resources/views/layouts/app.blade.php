@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Devstagram - @yield('title')</title>
         @stack('styles')
-        @vite(['./resources/css/app.css', './resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-gray-100">
         <header class="p-5 border-b bg-white shadow sticky top-0">
