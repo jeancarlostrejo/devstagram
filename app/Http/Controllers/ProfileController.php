@@ -27,9 +27,14 @@ class ProfileController extends Controller
     public function update(UpdateUserProfileRequest $request, User $user): RedirectResponse
     {
         $validated = $request->validated();
-        
-        if ($request->hasFile('image')) {
+
+        if ($request->hasFile('image') && !$request->notImage) {
             $nameImage = UploadImageService::upload($request->file('image'),'profiles', $user);
+        }
+
+        if($request->notImage){
+            UploadImageService::delete('profiles/' . $user->image);
+            $user->image = null;
         }
 
         $validated['image'] = $nameImage ?? $user->image ?? null;
