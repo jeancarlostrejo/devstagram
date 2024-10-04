@@ -42,6 +42,6 @@ class ProfileController extends Controller
         $user->fill($validated);
         $user->save();
 
-        return to_route('posts.index', $user);
+        return to_route('posts.index', $user)->with('message', 'Se ha actualizado tu información de perfil');
     }
 }
