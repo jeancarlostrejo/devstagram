@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\View\View;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
 use App\Http\Requests\UpdateUserProfileRequest;
-
+use App\Services\UploadImageService;
 
 class ProfileController extends Controller
 {
@@ -33,19 +29,7 @@ class ProfileController extends Controller
         $validated = $request->validated();
         
         if ($request->hasFile('image')) {
-            if ($user->image) {
-                if (File::exists(Storage::path('profiles/' . $user->image))) {
-                    Storage::delete('profiles/' . $user->image);
-                }
-            }
-
-            $image = $request->file('image');
-            $nameImage = Str::uuid() . "." . $image->extension();
-            $imagePath = storage_path('app/public/profiles') . '/' . $nameImage;
-
-            $serverImage = Image::read($image);
-            $serverImage->resize(1000, 1000);
-            $serverImage->save($imagePath);
+            $nameImage = UploadImageService::upload($request->file('image'),'profiles', $user);
         }
 
         $validated['image'] = $nameImage ?? $user->image ?? null;
