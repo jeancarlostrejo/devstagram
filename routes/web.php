@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
@@ -35,3 +36,6 @@ Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('
 
 Route::get('/{user:username}/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::patch('/{user:username}/edit-profile', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
