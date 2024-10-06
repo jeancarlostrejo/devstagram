@@ -38,9 +38,9 @@
                     @endauth
 
                 </div>
-                <p class="text-gray-800 text-sm mt-5">0 <label class="font-normal">Seguidores</label></p>
-                <p class="text-gray-800 text-sm">0 <label class="font-normal">Siguiendo</label></p>
-                <p class="text-gray-800 text-sm font-bold">{{ $user->posts->count() }} <label class="font-normal">Posts</label></p>
+                <p class="text-gray-800 text-sm mt-5">0 <span class="font-normal">Seguidores</span></p>
+                <p class="text-gray-800 text-sm">0 <span class="font-normal">Siguiendo</span></p>
+                <p class="text-gray-800 text-sm font-bold">{{ $user->posts->count() }} <span class="font-normal">Posts</span></p>
             </div>
         </div>
     </div>
