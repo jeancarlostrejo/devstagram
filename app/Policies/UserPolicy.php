@@ -8,27 +8,11 @@ use Illuminate\Auth\Access\Response;
 class UserPolicy
 {
     /**
-     * Determine whether the user can view any models.
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
-
-    /**
      * Determine whether the user can view the model.
      */
     public function view(User $userAuth, User $userProfile): bool
     {
         return $userAuth->id === $userProfile->id;
-    }
-
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user)
-    {
-        //
     }
 
     /**
@@ -39,27 +23,18 @@ class UserPolicy
         return $userAuth->id === $userProfile->id;
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, User $model)
+    public function notOwnUser(User $userAuth, User $userProfile): bool
     {
-        //
+        return $userAuth->id !== $userProfile->id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, User $model)
+    public function follow(User $authUser, User $userFollow): bool
     {
-        //
+        return !($userFollow->checkFollow($authUser)) && $this->notOwnUser($authUser, $userFollow);
     }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, User $model)
+    public function unfollow(User $authUser, User $userFollow): bool
     {
-        //
+        return $userFollow->checkFollow($authUser) && $this->notOwnUser($authUser, $userFollow);
     }
 }

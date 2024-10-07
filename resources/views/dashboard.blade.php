@@ -43,18 +43,21 @@
                 <p class="text-gray-800 text-sm font-bold">{{ $user->posts->count() }} <span class="font-normal">Posts</span></p>
 
                 @auth
-                    @if($user->id !== auth()->user()->id)
+                    @can('follow', $user)
                         <form action="{{ route('users.follow', $user) }}" method="POST">
                             @csrf
                             <input type="submit" class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs
                             font-bold cursor-pointer" value="Seguir">
                         </form>
-                        <form action="" method="POST">
+                    @endcan
+                    @can('unfollow',$user)
+                        <form action="{{ route('users.unfollow', $user) }}" method="POST">
                             @csrf
+                            @method('DELETE')
                             <input type="submit" class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs
                             font-bold cursor-pointer" value="Dejar de seguir">
                         </form>
-                    @endif
+                    @endcan
                 @endauth
             </div>
         </div>
