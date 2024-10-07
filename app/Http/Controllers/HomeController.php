@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function __invoke(Request $request)
     {
         $ids = (auth()->user()->followings->pluck('id')->toArray());
 
-        $posts = Post::whereIn('user_id', $ids)->paginate(10);
+        $posts = Post::whereIn('user_id', $ids)->latest()->paginate(10);
         $posts->load('user');
 
         return view('home', compact('posts'));
