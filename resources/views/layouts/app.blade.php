@@ -6,6 +6,7 @@
         <title>Devstagram - @yield('title')</title>
         @stack('styles')
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="bg-gray-100">
         <header class="p-5 border-b bg-white shadow sticky top-0">
@@ -46,5 +47,6 @@
             Devstagram - Todos los derechos reservados {{ now()->year }}
         </footer>
         @yield('scripts')
+        @livewireScripts
     </body>
 </html>
