@@ -10,7 +10,7 @@
     <body class="bg-gray-100">
         <header class="p-5 border-b bg-white shadow sticky top-0">
             <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-3xl font-black">Devstagram</h1>
+                <h1 class="text-3xl font-black"><a href="{{ route('home') }}">Devstagram</a></h1>
                 @auth
                     <nav class="flex gap-2 items-center">
                         <a href="{{ route('posts.create') }}" class="flex items-center gap-2 bg-white border-2 p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer">
