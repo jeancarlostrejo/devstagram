@@ -28,6 +28,10 @@ class ProfileController extends Controller
     {
         $validated = $request->validated();
 
+        if (!auth()->attempt(['email' => auth()->user()->email, 'password' => $request->password])) {
+            return back()->with('message', 'Incorrect password, is not possible update your profile information');
+        }
+
         if ($request->hasFile('image') && !$request->notImage) {
             $nameImage = UploadImageService::upload($request->file('image'),'profiles', $user);
         }

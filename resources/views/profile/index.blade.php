@@ -10,6 +10,11 @@
             <form action="{{ route('profile.update', auth()->user()) }}" method="POST" enctype="multipart/form-data" class="mt-10 md:mt-0">
                 @csrf
                 @method('PATCH')
+
+                @if (session('message'))
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ session('message') }}</p>
+                @endif
+                
                 <div class="mb-5">
                     <label for="name" class="mb-2 text-gray-500 font-bold">Nombre
                     </label>
@@ -41,6 +46,13 @@
 
                 <div class="mb-5">
                     <input id="notImage" type="checkbox" name="notImage"> <label for="notImage" class="text-gray-500 text-sm">Quitar foto de perfil</label>
+                </div>
+
+                <div class="mb-5">
+                    <label for="username" class="mb-2 text-gray-500 font-bold">Contraseña
+                    </label>
+                    <input type="password" name="password" id="password" class="border p-3 w-full rounded-lg"
+                        placeholder="Ingrese su contraseña para validar la actualización">
                 </div>
 
                 <div class="flex gap-2">
