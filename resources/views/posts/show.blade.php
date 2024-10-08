@@ -67,7 +67,7 @@
                 @endauth
 
                 <div class="bg-white shadow mb5 max-h-96 overflow-y-scroll mt-10">
-                    @forelse ($post->comments as $comment)
+                    @forelse ($comments as $comment)
                          <div class="p-5 border-gray-300 border-b">
                             <a href="{{ route('posts.index', $comment->user) }}" class="font-bold">{{ $comment->user->username }}</a>
                             <p>{{ $comment->comment }}</p>
@@ -76,6 +76,9 @@
                     @empty
                         <p class="p-10 text-center">No hay comentarios aún</p>
                     @endforelse
+                </div>
+                <div class="tex-white mt-5 px-3 sm:p-0">
+                    {{ $comments->links() }}
                 </div>
             </div>
         </div>

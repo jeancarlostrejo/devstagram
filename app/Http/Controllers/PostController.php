@@ -37,11 +37,14 @@ class PostController extends Controller
         return to_route('posts.index', auth()->user()->username)->with('message', '¡Publicación creada exitosamente!');
     }
 
-    public function show(User $user, Post $post)
+    public function show(User $user, Post $post): View
     {
-        $post->load('comments.user')->loadCount('likes');
+        $post->load('user')->loadCount('likes');
+
+        $comments = $post->comments()->latest()->paginate(10);
+        $comments->load('user');
         
-        return view('posts.show', compact('post', 'user'));
+        return view('posts.show', compact('post', 'user', 'comments'));
     }
 
     public function destroy(Post $post): RedirectResponse
