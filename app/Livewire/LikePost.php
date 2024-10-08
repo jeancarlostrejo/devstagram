@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Post;
 use Livewire\Component;
 
 class LikePost extends Component
@@ -20,15 +21,14 @@ class LikePost extends Component
     {
         if ($this->post->checkLike(auth()->user())){
             $this->post->likes()->where('user_id', auth()->user()->id)->delete();
-            $this->isLiked = false;
-            $this->likes--;
         } else {
             $this->post->likes()->create([
                 'user_id' => auth()->user()->id,
             ]);
-            $this->isLiked = true;
-            $this->likes++;
         }
+
+        $this->post = Post::withCount('likes')->find($this->post->id);
+        $this->isLiked = !$this->isLiked;
     }
 
     public function render()
