@@ -1,4 +1,4 @@
-@props(['posts'])
+@props(['posts','message'])
 
 <div>
     @if ($posts->count())
@@ -16,6 +16,6 @@
             {{ $posts->links() }}
         </div>
     @else
-        <p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts, sigue a alguien para mostrar sus posts</p>
+        <p class="text-gray-600 uppercase text-sm text-center font-bold">{{ $message }}</p>
     @endif
 </div>
