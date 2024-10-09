@@ -26,5 +26,5 @@
             <p class="p-10 text-center">No hay comentarios aún</p>
         @endforelse
     </div>
-    <div class="tex-white mt-5 px-3 sm:p-0">{{ $comments->links() }}</div>
+    <div class="tex-white mt-5 px-3 sm:p-0">{{ $comments->links(data: ['scrollTo' => false]) }}</div>
 </div>
