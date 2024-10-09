@@ -5,11 +5,13 @@ namespace App\Livewire;
 use App\Models\Comment;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CommentsBox extends Component
 {
+    use WithPagination;
+
     public $post;
-    public $comments;
 
     #[Validate('required|min:3|max:255')] 
     public $newMessage='';
@@ -17,8 +19,6 @@ class CommentsBox extends Component
     public function mount($post)
     {
         $this->post =  $post;
-
-        $this->comments = Comment::with('user')->where('post_id', $this->post->id)->latest()->get();
     }
 
     public function store()
@@ -30,13 +30,14 @@ class CommentsBox extends Component
             'comment' => $this->newMessage,
         ]);
 
-        $this->comments = Comment::with('user')->where('post_id', $this->post->id)->latest()->get();
-
         $this->newMessage='';
     }
 
     public function render()
     {
-        return view('livewire.comments-box');
+        $comments = $this->post->comments()->latest()->paginate(10);
+        $comments->load('user');
+
+        return view('livewire.comments-box', compact('comments'));
     }
 }
