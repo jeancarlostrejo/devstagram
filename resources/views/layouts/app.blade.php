@@ -9,7 +9,7 @@
         @livewireStyles
     </head>
     <body class="bg-gray-100">
-        <header class="p-5 border-b bg-white shadow sticky top-0">
+        <header class="p-5 border-b bg-white shadow sticky top-0 z-30">
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black"><a href="{{ route('home') }}">Devstagram</a></h1>
                 @auth
